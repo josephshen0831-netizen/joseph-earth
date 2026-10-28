@@ -1,0 +1,142 @@
+@font-face{font-family:PortfolioDIN;src:url('./DIN-BoldAlternate.otf') format('opentype');font-display:swap}
+.portfolio-edition{--paper:#e3edfa;--acid:#b8d8ff;--ink:#03070d;--rust:#83b9ed;background:#000;color:var(--paper)}
+.portfolio-edition::before{display:none}
+.portfolio-edition main{transition:filter 1.5s ease,transform 2s cubic-bezier(.16,1,.3,1)}
+.portfolio-edition main canvas{filter:none}
+.portfolio-edition.pre-enter main{opacity:0;transform:scale(.75);filter:blur(18px)}
+.portfolio-edition .earth-gate{background:#000;transition:opacity .75s,visibility .75s}
+.portfolio-edition .earth-gate::before,.portfolio-edition .earth-gate::after{display:none}
+.portfolio-edition .gate-copy{width:auto;text-align:center}
+.portfolio-edition .gate-enter{display:block;width:100px;height:24px;padding:0;border:0;border-radius:0;background:#000;backdrop-filter:none;box-shadow:none;color:#fff;font:700 14px/24px PortfolioDIN,'Arial Narrow',sans-serif;letter-spacing:0;text-indent:0;text-transform:uppercase;transition:color .3s}
+.portfolio-edition .gate-enter:hover{color:var(--acid);transform:none;box-shadow:none;background:#000}
+.portfolio-edition.pre-enter .folio-hand{visibility:hidden;pointer-events:none}
+.folio-entry-line{position:absolute;left:0;top:calc(50% - 5px);height:10px;background:#fff;width:100%;animation:entry-load 1.2s ease-out both}
+.portfolio-edition .gate-copy{background:#000;padding:0 15px;z-index:2}
+@keyframes entry-load{from{width:0}to{width:100%}}
+.portfolio-edition .earth-disco-title{top:32px;left:50%;width:65%;font:400 clamp(1.4rem,2.8vw,2.6rem)/1 'Cormorant Garamond',serif;letter-spacing:.06em;animation:none;transform:translateX(-50%);opacity:.9}
+.portfolio-edition .earth-disco-title .disco-line{display:inline;background:none;color:var(--paper);filter:none;animation:none;-webkit-text-stroke:0;text-transform:none}
+.portfolio-edition .disco-line-earth{margin:0;font-size:1em;letter-spacing:.06em}
+.portfolio-edition .disco-line-earth::before{content:' ';display:inline;position:static;color:inherit;transform:none;text-shadow:none}
+.portfolio-edition .disco-line::after,.portfolio-edition .earth-disco-title::before{display:none}
+.portfolio-edition .legacy-title-copy{top:90px!important}
+.portfolio-edition .legacy-title-copy>p:last-child{color:#afb5aa;font-size:.875rem}
+.portfolio-edition .creator-hand,.portfolio-edition .earth-hover-chroma,.portfolio-edition .earth-tech-hud{display:none}
+.folio-nav{position:fixed;inset:0;z-index:45;pointer-events:none;transition:opacity .5s}
+.folio-hand{position:absolute;width:clamp(100px,15vw,200px);height:clamp(105px,17vh,160px);background:transparent;border:0;color:#a7bbd4;pointer-events:auto;cursor:pointer;opacity:0;transition:opacity 1.2s 0.3s,color .3s;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:10px;padding:12px}
+.folio-entered .folio-hand{opacity:1}
+.folio-hand-store{top:5%;right:4%}.folio-hand-media{top:5%;left:4%}.folio-hand-events{bottom:8%;left:4%}.folio-hand-about{bottom:8%;right:4%}
+.hand-label{font:700 14px/1 PortfolioDIN,'Arial Narrow',sans-serif;letter-spacing:.04em;padding:7px 10px;background:#0009;transition:color .3s,text-shadow .3s}
+.folio-hand:hover .hand-label,.folio-hand:focus-visible .hand-label{color:#fff;text-shadow:0 0 16px #b8d8ffaa}
+.hand-fallback{font:60px/1 Georgia,serif;color:#94c8f5;filter:drop-shadow(0 0 10px #60aaff44)}
+.hands-ready .hand-fallback{visibility:hidden}
+.folio-hands-render{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:0;transition:opacity 1s}
+.folio-entered .folio-hands-render{opacity:1}
+.folio-hands-render canvas{display:block;width:100%;height:100%}
+.earth-surface-bloom{position:fixed;z-index:7;width:clamp(85px,12vw,175px);aspect-ratio:1;pointer-events:none;border-radius:50%;opacity:0;mix-blend-mode:screen;filter:blur(13px);background:radial-gradient(circle,#ffdaacaa 0%,#ff9c485e 28%,#f46b2428 50%,transparent 72%);transform:translate(-50%,-50%)}
+.folio-signature{position:fixed;z-index:35;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;opacity:0;transition:opacity 1s;color:#acbfd7;white-space:nowrap}
+.folio-signature span:first-child{font:700 13px/1 PortfolioDIN,sans-serif;letter-spacing:.2em}
+.folio-signature span:last-child{font:400 12px/1.2 'Barlow',sans-serif;letter-spacing:.08em;color:#73859d}
+.folio-entered .folio-signature{opacity:1}
+.folio-panel-open .folio-signature,.creator-info-open .folio-signature,.region-open .folio-signature,.folio-panel-open .folio-nav,.creator-info-open .folio-nav,.region-open .folio-nav,.folio-panel-open .folio-hands-render,.creator-info-open .folio-hands-render,.region-open .folio-hands-render{opacity:0;pointer-events:none}
+.folio-panel-open .folio-hand,.creator-info-open .folio-hand,.region-open .folio-hand{pointer-events:none}
+.folio-panel-open{overflow:hidden}
+.folio-panel[hidden]{display:none!important}
+.folio-panel{position:fixed;inset:0;z-index:3000001;overflow:auto;overscroll-behavior:contain;background:#060a12;color:var(--paper);scroll-behavior:smooth;animation:folio-reveal .65s ease both}
+@keyframes folio-reveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.folio-close{position:fixed;right:30px;top:24px;z-index:8;display:flex;align-items:center;gap:18px;background:#060a12ed;color:var(--paper);border:1px solid #7a9bb540;padding:9px 12px 9px 18px;font:700 13px/1 PortfolioDIN,sans-serif;letter-spacing:.1em;cursor:pointer}
+.folio-close span{font:300 28px/1 'Barlow',sans-serif;transition:transform .3s}
+.folio-close:hover span{transform:rotate(90deg)}
+.folio-panel-body{max-width:1400px;margin:auto;padding:110px clamp(24px,6vw,100px) 80px}
+.folio-heading{margin-bottom:65px;max-width:1000px}
+.folio-eyebrow{font:700 12px/1.5 PortfolioDIN,'Arial Narrow',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#94acc8;margin:0 0 25px}
+.folio-heading h2{font:400 clamp(5rem,13vw,11rem)/.8 'Cormorant Garamond',serif;letter-spacing:-.065em;margin:30px 0 40px;color:#e9f3ff}
+.folio-lead{font:400 clamp(1.6rem,3.1vw,3rem)/1.12 'Cormorant Garamond',serif;letter-spacing:-.02em;margin:0 0 24px;color:#becfe5}
+.folio-panel p:not([class]),.project-columns p,.riff-layout p{font:400 17px/1.8 'Barlow',sans-serif;color:#b8c7dc;margin:0 0 20px}
+.folio-note{font:400 14px/1.7 'Barlow',sans-serif!important;color:#879bb7!important;max-width:580px}
+.folio-figure{margin:0;min-width:0}
+.folio-figure img,.folio-figure video{display:block;width:100%;height:auto;background:#030403;object-fit:contain}
+.folio-figure video{max-height:74vh;width:100%}
+.folio-figure figcaption{font:400 12px/1.6 PortfolioDIN,sans-serif;color:#8da5c2;letter-spacing:.08em;margin-top:12px}
+.media-feature{margin-bottom:80px}
+.performance-title{margin:0 0 26px}
+.performance-title .folio-eyebrow{margin-bottom:12px}
+.performance-title h3{font:400 clamp(2.5rem,5vw,4.5rem)/1.05 'Cormorant Garamond',serif;letter-spacing:-.035em;color:#e3edfb;margin:0}
+.media-feature video{aspect-ratio:16/9;max-height:70vh}
+.folio-caption{display:grid;grid-template-columns:1fr 2fr;gap:30px;border-top:1px solid #819fca44;margin-top:24px;padding-top:24px}
+.folio-caption>span{font:700 12px/1.5 PortfolioDIN,sans-serif;letter-spacing:.13em;color:#bad9ff}
+.folio-caption p{max-width:600px}
+.media-pair{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(25px,5vw,70px);align-items:start}
+.media-pair figure:nth-child(2){margin-top:130px}
+.media-pair figure:nth-child(2) img{max-height:700px;object-fit:cover;object-position:top}
+.store-index{display:flex;flex-wrap:wrap;gap:20px 40px;border-top:1px solid #819fca44;border-bottom:1px solid #819fca44;padding:20px 0;margin-bottom:70px}
+.store-index a{font:700 14px/1.5 PortfolioDIN,sans-serif;text-decoration:none;color:#bddbff}
+.store-project{scroll-margin-top:90px;margin-bottom:110px}
+.project-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:15px 24px;margin-bottom:26px}
+.project-title>.folio-eyebrow{width:100%;margin-bottom:4px}
+.project-title h3{font:400 clamp(3.5rem,7vw,7rem)/1 'Cormorant Garamond',serif;letter-spacing:-.05em;margin:0;color:#e3edfb}
+.project-status{font:700 12px/1.5 PortfolioDIN,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#a5bddb;border:1px solid #7096c166;padding:7px 12px}
+.project-intro{font:400 clamp(1.6rem,3vw,2.65rem)/1.2 'Cormorant Garamond',serif!important;letter-spacing:-.015em;color:#d1e2f8!important;max-width:880px;margin-bottom:40px!important}
+.project-columns{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(25px,6vw,90px);margin:65px 0;align-items:start}
+.project-columns figure img{max-height:550px;object-fit:contain}
+.folio-link{display:inline-flex;gap:30px;align-items:center;color:#b8d8ff;font:700 14px/1.5 PortfolioDIN,sans-serif;letter-spacing:.04em;text-decoration:none;border-bottom:1px solid #9cc5f366;padding:10px 0;margin:12px 0 20px}
+.folio-link:hover{color:#fff;border-color:#fff}
+.app-figure{padding:18px;background:#dee6f0;margin-bottom:60px}
+.app-figure figcaption{color:#4a586c}
+.project-details{border-top:1px solid #819fca55;margin-top:50px}
+.project-details details{border-bottom:1px solid #819fca44;padding:24px 0}
+.project-details summary{font:400 clamp(1.5rem,3vw,2.3rem)/1.25 'Cormorant Garamond',serif;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;list-style:none}
+.project-details summary::-webkit-details-marker{display:none}
+.project-details summary span{font:700 12px/1 PortfolioDIN,sans-serif;color:#a6c5e8}
+.project-details summary::after{content:'+';font:300 26px/1 'Barlow',sans-serif;width:26px}
+.project-details details[open] summary::after{content:'−'}
+.project-details details>div{max-width:850px;margin:25px 0 0;padding-left:clamp(0px,3vw,36px)}
+.project-details p,.project-details li{font:400 17px/1.8 'Barlow',sans-serif;color:#b8c7dc;margin:0 0 18px}
+.project-details ul{padding-left:20px}
+.project-details li{margin:6px 0}
+.project-details strong{color:#dfefff;font-weight:500}
+.signal-path{color:#b8d8ff!important}
+.riff-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(25px,6vw,80px);align-items:start;margin-top:40px;margin-bottom:60px}
+.riff-layout>figure{position:sticky;top:95px}
+.riff-player{margin:35px 0;padding:25px 0;border-top:1px solid #819fca44;border-bottom:1px solid #819fca44}
+.riff-player .folio-eyebrow{display:block;margin-bottom:15px}
+.riff-player audio{width:100%;height:42px;accent-color:#b8d58f;color-scheme:dark}
+.folio-footer{border-top:1px solid #819fca44;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:25px;margin:0 clamp(24px,6vw,100px);padding:35px 0 45px;font:400 13px/1.5 'Barlow',sans-serif;color:#94aac7}
+.folio-footer a,.folio-footer button{font:inherit;color:inherit;text-decoration:none}
+.folio-footer button{background:none;border:0;cursor:pointer}
+.events-heading{padding-top:15px;text-align:center;margin-bottom:70px}
+.joseph-wordmark{display:block;width:100%;max-height:330px;object-fit:contain;mix-blend-mode:screen;margin:25px auto 0}
+.event-art{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(30px,7vw,100px);align-items:center;max-width:1050px;margin:auto}
+.event-art figure{border:1px solid #779cc333;padding:12px;background:#050b14}
+.event-art img{aspect-ratio:1;object-fit:contain}
+.event-copy h3{font:400 clamp(4.5rem,8vw,8rem)/.82 'Cormorant Garamond',serif;letter-spacing:-.05em;margin:25px 0 40px}
+.event-copy h3 em{font-weight:300;color:#b8cce6}
+.event-copy>p:not([class]){font:400 1.6rem/1.2 'Cormorant Garamond',serif;color:#dfebff}
+.portfolio-edition .creator-panel{background:radial-gradient(ellipse at 20% 0,#17345244,transparent 50%),#060a12fa;color:var(--paper)}
+.portfolio-edition .creator-panel::before{display:none}
+.portfolio-edition .creator-story h2{background:none;color:var(--paper)}
+.portfolio-edition .creator-kicker,.portfolio-edition .creator-portrait-note{font-family:PortfolioDIN,sans-serif;color:#a3c3e8;letter-spacing:.12em}
+.portfolio-edition .creator-pullquote{color:#c1dafa}
+.portfolio-edition .creator-portrait{border-color:#95b7e166;box-shadow:0 25px 90px #0008}
+.portfolio-edition .creator-close{background:#060a12ed;color:#e0ecfc;font-family:PortfolioDIN,sans-serif}
+.about-biography p:not(.folio-eyebrow){font:400 17px/1.8 'Barlow',sans-serif;color:#bfcee1;margin:0 0 20px}
+.about-biography{margin:30px 0 45px;padding-bottom:25px;border-bottom:1px solid #819fca44}
+.portfolio-edition .creator-manifesto{color:#a9bdd7}
+.portfolio-edition .creator-email,.portfolio-edition .creator-email span{color:#c4dfff}
+.portfolio-edition .region-editorial{background:linear-gradient(90deg,#020502cc,transparent)}
+.portfolio-edition main .absolute.bottom-6{bottom:30px}
+.folio-hand:focus-visible,.folio-link:focus-visible,.folio-close:focus-visible,.store-index a:focus-visible,.folio-back:focus-visible{outline:1px solid #b8d8ff;outline-offset:5px}
+@media(max-width:700px){
+  .folio-hand{width:90px;height:105px;padding:8px 3px}.folio-hand-media{left:2%;top:10%}.folio-hand-store{right:2%;top:10%}.folio-hand-events{left:2%;bottom:12%}.folio-hand-about{right:2%;bottom:12%}
+  .hand-label{font-size:12px;padding:5px 7px}.hand-fallback{font-size:46px}
+  .portfolio-edition .earth-disco-title{width:95%;font-size:clamp(1.2rem,5vw,1.7rem);top:25px}.portfolio-edition .legacy-title-copy{top:65px!important}
+  .portfolio-edition main .absolute.bottom-6{bottom:50px}.portfolio-edition main .absolute.bottom-6>p:first-child{max-width:230px;font-size:11px}
+  .folio-signature{bottom:14px;gap:5px}.folio-signature span:first-child{font-size:11px}.folio-signature span:last-child{font-size:10px}
+  .folio-panel-body{padding:100px 22px 45px}.folio-heading{margin-bottom:40px}.folio-heading h2{font-size:5.5rem}.folio-close{right:18px;top:18px}
+  .folio-caption,.media-pair,.project-columns,.riff-layout,.event-art{grid-template-columns:1fr}
+  .media-pair figure:nth-child(2){margin-top:12px;max-width:80%;margin-left:auto}.media-feature{margin-bottom:45px}.folio-caption{gap:15px}
+  .project-columns{margin:35px 0}.project-columns figure{max-width:80%;margin:auto}.project-title h3{font-size:3.4rem}.store-project{margin-bottom:65px}.riff-layout>figure{position:static;max-height:500px;overflow:hidden}
+  .riff-layout>figure img{max-height:450px;object-fit:cover}.app-figure{padding:8px}
+  .events-heading{margin-bottom:30px}.event-art figure{max-width:320px;margin:auto}.event-copy{text-align:center}.event-copy .folio-note{margin-left:auto;margin-right:auto}.event-copy h3{font-size:5rem}
+  .folio-footer{margin:0 22px;align-items:flex-start;flex-direction:column;gap:14px}
+}
+@media(prefers-reduced-motion:reduce){.folio-panel,.folio-entry-line{animation:none}.folio-hands-render,.folio-hand,main{transition:none!important}.folio-panel{scroll-behavior:auto}}

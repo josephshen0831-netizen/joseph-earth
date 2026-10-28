@@ -778,7 +778,7 @@ main .absolute.bottom-6 > p:first-child { max-width: 28rem; font-size: .75rem; l
   .earth-disco-title, .earth-disco-title .disco-line, .gate-title, .disco-line::after { animation: none; }
   main, .creator-panel, .earth-gate, .creator-hand-glyph { transition-duration: .01ms; }
 }
-</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&amp;family=Barlow+Condensed:wght@300;400;500&amp;family=Barlow:wght@300;400&amp;display=swap" data-precedence="default"/><title>Joseph Earth — Echoes Across the Earth</title><meta name="description" content="Explore five musical cultures through their unique sounds, traditional instruments, and traditions."/><meta property="og:title" content="Joseph Earth — Echoes Across the Earth"/><meta property="og:description" content="Explore five musical cultures through their unique sounds, traditional instruments, and traditions."/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="icon" href="/favicon.ico" type="image/x-icon"/><style>@font-face {
+</style><link rel="stylesheet" href="./portfolio.css?v=f0c4582267"><script type="module" src="./portfolio.js?v=f0c4582267"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&amp;family=Barlow+Condensed:wght@300;400;500&amp;family=Barlow:wght@300;400&amp;display=swap" data-precedence="default"/><title>Joseph Shen — Music, Technology &amp; Experiments</title><meta name="description" content="Explore five musical cultures through their unique sounds, traditional instruments, and traditions."/><meta property="og:title" content="Joseph Earth — Echoes Across the Earth"/><meta property="og:description" content="Explore five musical cultures through their unique sounds, traditional instruments, and traditions."/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="icon" href="/favicon.ico" type="image/x-icon"/><style>@font-face {
         font-family: "CameraPlainVariable";
         src: url("https://cdn.gpteng.co/mcp-widgets/v1/fonts/CameraPlainVariable.woff2")
           format("woff2");
@@ -950,7 +950,7 @@ main .absolute.bottom-6 > p:first-child { max-width: 28rem; font-size: .75rem; l
         #lovable-badge-close:focus-visible {
           outline-width: 3px;
         }
-      }</style><meta name="twitter:title" content="Atlas of Sound — Orbital Music Mixer"/><meta name="twitter:description" content="An interactive digital music sculpture: mix five orbiting stems, then enter five regional music spaces."/><meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d454398ff8813b65a476cf0904345cf7/id-preview-efc7abca--8638f36d-51e4-483f-b371-4fda6b2c9dc4.lovable.app-1788314581115.png"/><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d454398ff8813b65a476cf0904345cf7/id-preview-efc7abca--8638f36d-51e4-483f-b371-4fda6b2c9dc4.lovable.app-1788314581115.png"/></head><body><!--$--><main class="relative h-screen w-screen overflow-hidden bg-background"></main><script>(function (a, f) {
+      }</style><meta name="twitter:title" content="Atlas of Sound — Orbital Music Mixer"/><meta name="twitter:description" content="An interactive digital music sculpture: mix five orbiting stems, then enter five regional music spaces."/><meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d454398ff8813b65a476cf0904345cf7/id-preview-efc7abca--8638f36d-51e4-483f-b371-4fda6b2c9dc4.lovable.app-1788314581115.png"/><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d454398ff8813b65a476cf0904345cf7/id-preview-efc7abca--8638f36d-51e4-483f-b371-4fda6b2c9dc4.lovable.app-1788314581115.png"/></head><body class="pre-enter"><div id="folio-boot" style="position:fixed;inset:0;background:#000;z-index:4000000;display:grid;place-items:center;color:white;font:700 14px Arial,sans-serif;">LOADING…</div><!--$--><main class="relative h-screen w-screen overflow-hidden bg-background"></main><script>(function (a, f) {
         let l;
         try {
           l = JSON.parse(sessionStorage.getItem(a) || "{}");
@@ -5634,8 +5634,13 @@ function su$1({ onSelectRegion: e, dimmed: t }) {
 			n.loop = !0, n.preload = `auto`, n.crossOrigin = `anonymous`, n.volume = 0, e.els[t.id] = n, e.targets[t.id] = 0;
 		});
 		let t = () => m();
-		return window.addEventListener(`pointerdown`, t), window.addEventListener(`keydown`, t), window.addEventListener(`touchstart`, t), () => {
-			window.removeEventListener(`pointerdown`, t), window.removeEventListener(`keydown`, t), window.removeEventListener(`touchstart`, t), Object.values(e.els).forEach((e) => {
+		const portfolioAudio = (event) => {
+			Object.values(e.els).forEach((media) => {
+				media.muted = Boolean(event.detail);
+			});
+		};
+		return window.addEventListener(`pointerdown`, t), window.addEventListener(`keydown`, t), window.addEventListener(`touchstart`, t), window.addEventListener(`portfolio-audio`, portfolioAudio), () => {
+			window.removeEventListener(`pointerdown`, t), window.removeEventListener(`keydown`, t), window.removeEventListener(`touchstart`, t), window.removeEventListener(`portfolio-audio`, portfolioAudio), Object.values(e.els).forEach((e) => {
 				e.pause(), e.src = ``;
 			}), e.ctx?.close().catch(() => {});
 		};
@@ -5687,6 +5692,9 @@ function su$1({ onSelectRegion: e, dimmed: t }) {
 		m.position.set(-5, -2, -3), r.add(m);
 		let g = new Sa$1(10473727, 6, 14);
 		g.position.set(-2.5, 1.8, 2.2), r.add(g);
+		const surfaceGloss = new Sa$1(16747830, 0, 2.5, 1.5);
+		r.add(surfaceGloss);
+		let surfaceGlossAt = -Infinity;
 		let v = new sa$1(), y = new xo$1(s);
 		y.compileEquirectangularShader();
 		let b = v.load(nu$1.url), x = v.load(tu$1.url);
@@ -5887,7 +5895,19 @@ function su$1({ onSelectRegion: e, dimmed: t }) {
 			let t = s.domElement.getBoundingClientRect();
 			de.set((e.clientX - t.left) / t.width * 2 - 1, -((e.clientY - t.top) / t.height) * 2 + 1);
 		}, me = (e) => pe(e), he = (e) => {
-			pe(e), _e(!0);
+			pe(e);
+			ue.setFromCamera(de, i);
+			const surface = ue.intersectObject(j, false)[0];
+			const satellite = ue.intersectObjects(ce.map((track) => track.mesh), false)[0];
+			if (surface && (!satellite || surface.distance < satellite.distance)) {
+				surfaceGloss.position.copy(surface.point).multiplyScalar(1.14);
+				surfaceGlossAt = performance.now();
+				window.dispatchEvent(new CustomEvent("earth-surface-click", { detail: {
+					x: e.clientX,
+					y: e.clientY
+				} }));
+			}
+			_e(!0);
 		};
 		s.domElement.addEventListener(`pointermove`, me), s.domElement.addEventListener(`pointerdown`, he);
 		let ge = null, _e = (e) => {
@@ -5944,6 +5964,8 @@ function su$1({ onSelectRegion: e, dimmed: t }) {
 				l = e / o.data.length / 255;
 			}
 			let u = f.current.length, m = u > 0 ? .12 + u * .05 + .05 * Math.sin(a * 2.4) + .03 * Math.sin(a * 5.7) : 0, h = Math.max(l * 1.6, m);
+			const glossAge = (performance.now() - surfaceGlossAt) / 1e3;
+			surfaceGloss.intensity = glossAge < 1.35 ? 12 * Math.pow(Math.max(0, 1 - glossAge / 1.35), 2) : 0;
 			I += (h - I) * Math.min(1, n * 5), M.rotation.y += n * (.03 + I * .05), A.emissiveIntensity = .22 + I * .45, A.roughness = .28 - I * .1, A.envMapIntensity = 1.5 + I * .9, te.roughness = .16 - I * .08, te.envMapIntensity = 1.8 + I * 1.1, re.opacity = .8 + I * .25, ae.opacity = .04 + I * .16 * (.6 + .4 * Math.sin(a * 2.4)), oe.rotation.y = a * .06, g.intensity = 5 + I * 8, se.material.opacity = .075 + I * .18, ce.forEach((e) => {
 				let r = f.current.includes(e.track.id);
 				e.on += (+!!r - e.on) * Math.min(1, n * 4), e.angle += n * e.track.speed * (1 + e.on * .25);
@@ -17382,7 +17404,7 @@ void main() {
 			speed: .16,
 			phase: .2,
 			height: .05,
-			size: .062
+			size: .087
 		},
 		{
 			id: `pad`,
@@ -17396,7 +17418,7 @@ void main() {
 			speed: .115,
 			phase: 1.9,
 			height: -.12,
-			size: .055
+			size: .077
 		},
 		{
 			id: `guitar`,
@@ -17410,7 +17432,7 @@ void main() {
 			speed: .088,
 			phase: 3.4,
 			height: .18,
-			size: .05
+			size: .07
 		},
 		{
 			id: `drums`,
@@ -17424,7 +17446,7 @@ void main() {
 			speed: .067,
 			phase: 5.1,
 			height: -.22,
-			size: .058
+			size: .081
 		}
 	], Ul$1 = vs(), Wl$1 = [
 		{
